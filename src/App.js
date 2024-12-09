@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { EditorState, convertToRaw } from 'draft-js';
 import RichTextEditor from './RichTextEditor'; // Import the RichTextEditor component
 import { stateToHTML } from 'draft-js-export-html';
-import './App.css'
+import './App.scss'
+import draftToHtml from 'draftjs-to-html';
 import HtmlOutput from './HtmlOutput';
 
 class App extends Component {
@@ -33,19 +34,31 @@ class App extends Component {
     console.log('Editor State (HTML Content):', htmlContent);
 
     return (
-      <div style={{ margin: '20px' }}>
-        <h1 style={{ textAlign: 'center' }}>Rich Text Editor</h1>
-        {/* Use the RichTextEditor component */}
-        <RichTextEditor
-          editorState={editorState}
-          onEditorStateChange={this.onEditorStateChange}
-        />
+      <div style={{ margin: '5px' }}>
+        <div style={{ display: 'flex', gap: '20px' }}>
+          <div style={{ width: '60%' }}>
+            <h1 style={{ textAlign: 'center' }}>Rich Text Editor</h1>
+            {/* Use the RichTextEditor component */}
+            <RichTextEditor
+              editorState={editorState}
+              onEditorStateChange={this.onEditorStateChange}
+            />
+          </div>
+          <div style={{ width: '40%' }}>
+            <HtmlOutput editorState={editorState} />
+          </div>
+        </div>
 
         {/* Render the HTML output */}
-        <div>
-        <HtmlOutput editorState={editorState} />
-          <h2>Rendered HTML Content:</h2>
-          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        <div className='renderBox'>
+          <div className='renderBoxDiv'>
+            <h2>Rendered HTML Content htmlContent:</h2>
+            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+          </div>
+          <div className='renderBoxDiv'>
+            <h2>Rendered HTML Content draftToHtml:</h2>
+            <div dangerouslySetInnerHTML={{ __html: draftToHtml(convertToRaw(editorState.getCurrentContent())) }} />
+          </div>
         </div>
       </div>
     );

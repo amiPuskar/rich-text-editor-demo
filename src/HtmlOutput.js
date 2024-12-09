@@ -11,9 +11,10 @@ const HtmlOutput = ({ editorState }) => {
                 style={{
                     width: '100%',
                     height: '200px',
-                    marginTop: '10px',
                     padding: '10px',
-                    fontSize: '16px',
+                    fontSize: '15px',
+                    border:'none',
+                    resize:'none'
                 }}
                 readOnly
                 value={draftToHtml(convertToRaw(editorState.getCurrentContent()))} // Convert to HTML

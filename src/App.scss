@@ -1,0 +1,16 @@
+p,
+.public-DraftStyleDefault-block {
+  margin: 0 !important;
+}
+
+.renderBox {
+  display: flex;
+  gap: 20px;
+  div.renderBoxDiv{
+    width: 50%;
+  }
+}
+.rdw-editor-main{
+  max-height: 300px;
+  min-height: 200px;
+}
