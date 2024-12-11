@@ -51,10 +51,10 @@ class App extends Component {
 
         {/* Render the HTML output */}
         <div className='renderBox'>
-          <div className='renderBoxDiv'>
+          {/* <div className='renderBoxDiv'>
             <h2>Convert raw content to HTML:</h2>
             <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-          </div>
+          </div> */}
           <div className='renderBoxDiv'>
             <h2>Convert editorState to raw content:</h2>
             <div dangerouslySetInnerHTML={{ __html: draftToHtml(convertToRaw(editorState.getCurrentContent())) }} />
